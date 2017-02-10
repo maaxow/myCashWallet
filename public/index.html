@@ -1,0 +1,50 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html>
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Torrents</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
+	<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="vendor/components-font-awesome/css/font-awesome.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="vendor/jquery/dist/jquery.min.js"></script><!-- load angular -->
+	<script data-main="js/require.config.js" src="vendor/requirejs/require.js"></script><!-- load angular -->
+
+	<base href="/"/>
+</head>
+<body>
+	<div layout="column" layout-fill>
+		<md-toolbar md-scroll-shrink md-shrink-speed-factor="0.5" layout="row" layout-align="start center">
+			<md-button class="" aria-label="home" ui-sref="home">
+				<span> Home </span>
+			</md-button>
+			<md-button class="" aria-label="vizualisation" ui-sref="vizu">
+				<span> Vizualisation </span>
+			</md-button>
+			<md-button class="" aria-label="menu2" ui-sref="#">
+				<span> Menu 2 </span>
+			</md-button>
+			<md-button class="" aria-label="menu3" ui-sref="#">
+				<span> Menu 3 </span>
+			</md-button>
+		</md-toolbar>
+		<!--Note: for scrollShrink to work, the toolbar must be a sibling of a md-content element, placed before it.-->
+		<md-content layout-padding layout-wrap>
+		<!-- <md-button class="md-raised md-primary" ui-sref="home" aria-label="home">Home</md-button> -->
+			<div ui-view></div>
+		</md-content>
+	</div>
+	<p></p>
+</body>
+</html>
