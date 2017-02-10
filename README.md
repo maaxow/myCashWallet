@@ -1,7 +1,7 @@
 # myCashWallet
 Manage my cash wallet
 
-# Node App
+## Node App
 
 A Node app built with MongoDB and Angular.
 
