@@ -4,8 +4,8 @@
 
     <div>
       <label>Type</label>
-      <md-select ng-model="newMoney.type" aria-label="Type">
-          <md-option ng-value="opt" ng-repeat="opt in options" aria-label="">{{ opt }}</md-option>
+      <md-select ng-model="newMoney.type" aria-label="Type" data-ng-change="changeType()">
+          <md-option ng-value="opt" ng-repeat="opt in typeOptions" aria-label="">{{ opt }}</md-option>
       </md-select>
     </div>
 
@@ -16,16 +16,16 @@
       </md-select>
     </div>
 
-    <div>
+    <md-input-container>
       <label>Quantity</label>
       <input type="number" ng-model="newMoney.quantity">
-    </div>
+    </md-input-container>
 
 
     <md-button class="md-raised" aria-label="" data-ng-click="addMoney()">Add Money</md-button>
 
     <div ng-repeat="coin in money">
-      <line data-torrent="coin"></line>
+      <line data-money="coin"></line>
     </div>
 
     <!-- <md-list> -->

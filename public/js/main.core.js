@@ -19,6 +19,11 @@ define(function(require){
       url: '/vizu',
       templateUrl: 'views/vizu.html',
       controller: 'VizualisationController'
+    })
+    .state('add', {
+      url: '/add',
+      templateUrl: 'views/add.html',
+      controller: 'AddController'
     });
 
     // For invalid route

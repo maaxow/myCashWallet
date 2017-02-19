@@ -19,9 +19,9 @@ module.exports = function (app) {
 
     // POST CREATE
     app.post('/api/money', function (req, res) {
-      //console.log("post money req body", req.body);
 
-      return Money.create(req.body, function(err,res){
+      return Money.create(req.body, function(err, money){
+        //console.log("create money res", req.body, res);
         if(err){
           res.send(err);
         }

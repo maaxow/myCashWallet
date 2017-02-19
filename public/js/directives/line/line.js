@@ -4,7 +4,7 @@ define(function(require){
 
   angular.module('app.directives.line', ['app.service.money'])
 
-  .directive('line', function($torrents){
+  .directive('line', function($money){
     return {
       templateUrl: 'js/directives/line/line.html',
       scope: {
