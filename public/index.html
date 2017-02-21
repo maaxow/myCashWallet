@@ -7,12 +7,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-	<title>Torrents</title>
+	<title>My Cash Wallet</title>
 
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
 	<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="vendor/components-font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="vendor/angular-material-data-table/dist/md-data-table.min.css">
 	<style>
 		html 					{ overflow-y:scroll; }
 	</style>
@@ -35,9 +36,8 @@
 			<md-button class="" aria-label="add" ui-sref="add">
 				<span> Add cash</span>
 			</md-button>
-			<!-- <md-button class="" aria-label="menu3" ui-sref="#">
-				<span> Menu 3 </span>
-			</md-button> -->
+			<div flex></div>
+			<cw:total></cw:total>
 
 		</md-toolbar>
 		<!--Note: for scrollShrink to work, the toolbar must be a sibling of a md-content element, placed before it.-->

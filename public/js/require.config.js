@@ -17,6 +17,8 @@ require.config({
 		'angular-ui-router': vendor + 'angular-ui-router/release/angular-ui-router.min',
     'bootstrap-js': vendor + 'bootstrap/dist/js/bootstrap.min',
     'jquery': vendor + 'jquery/dist/jquery.min',
+    'chart': vendor + 'chart.js/dist/Chart.bundle.min',
+    'data-table' : vendor + 'angular-material-data-table/dist/md-data-table.min'
 
 
 	},
@@ -47,7 +49,10 @@ require.config({
 		},
     'bootstrap-js': {
 			deps: ['angular']
-		}
+		},
+    'data-table' : {
+      deps : ['angular']
+    }
 	}
 });
 

@@ -1,0 +1,22 @@
+<div>
+  <div>
+    <label>Type</label>
+    <md-select ng-model="newMoney.type" aria-label="Type" data-ng-change="changeType()" style="width: 10%">
+      <md-option ng-value="opt" ng-repeat="opt in typeOptions" aria-label="">{{ opt }}</md-option>
+    </md-select>
+  </div>
+
+  <div>
+    <label>Amount</label>
+    <md-select ng-model="newMoney.amount" aria-label="Amount" style="width: 10%">
+      <md-option ng-value="opt" ng-repeat="opt in amountsOptions">{{ opt }}</md-option>
+    </md-select>
+  </div>
+
+  <md-input-container style="width: 10%">
+    <label>Quantity</label>
+    <input type="number" ng-model="newMoney.quantity">
+  </md-input-container>
+
+  <md-button class="md-raised" aria-label="" data-ng-click="addMoney()">Add Money</md-button>
+</div>

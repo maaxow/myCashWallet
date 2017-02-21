@@ -5,16 +5,22 @@ define(function(require){
 
 	.factory('$money', ['$http','$q',function($http, $q) {
 		return {
-			get : function() {
-				return $http.get('/api/money');
+			get : function(config) {
+				return $http.get('/api/money').then(function(data){
+					var list = data.data;
+					for(var i in list){
+						if(list[i].type === "Coins")
+						list[i].amount = list[i].amount.toFixed(2);
+					}
+					data.data = list;
+					return data;
+				});
 			},
 			create : function(moneyData) {
-				console.log("money Service : moneyData : ", moneyData);
 				if(moneyData){
 					return $http.post('/api/money', moneyData);
 				}
-				//TODO Change this. Check moneyData is valid before.
-				return $http.post('/api/money', moneyData);
+				return $http.get('/api/money');
 			},
 			// update : function(id){
 			// 	//TODO finish  this

@@ -1,76 +1,60 @@
-  <h1>Vizualisation</h1>
+<div>
 
-	<div>
-
+  <div layout="row" layout-align="space-around center">
     <div>
-      <label>Type</label>
-      <md-select ng-model="newMoney.type" aria-label="Type" data-ng-change="changeType()">
-          <md-option ng-value="opt" ng-repeat="opt in typeOptions" aria-label="">{{ opt }}</md-option>
-      </md-select>
+      <!-- <h2>total : {{ counter.total }}</h2> -->
+      <canvas id="allDonut" width="200px" height="200px"></canvas>
     </div>
-
     <div>
-      <label>Amount</label>
-      <md-select ng-model="newMoney.amount" aria-label="Amount">
-          <md-option ng-value="opt" ng-repeat="opt in amountsOptions">{{ opt }}</md-option>
-      </md-select>
+      <h2>number of coins : {{ counter.nbCoins }}</h2>
+      <canvas id="coinsDonut" width="200px" height="200px"></canvas>
+    </div>
+    <div>
+      <h2>number of bills : {{ counter.nbBills }}</h2>
+      <canvas id="billsDonut" width="200px" height="200px"></canvas>
+    </div>
+  </div>
+
+  <!-- <div ng-repeat="coin in money">
+    <div layout="row" layout-align="space-around center" data-ng-if="$first">
+      <div flex>
+        <strong>Date</strong>
+      </div>
+      <div flex>
+        <strong>Type</strong>
+      </div>
+      <div flex>
+        <strong>Amount</strong>
+      </div>
+      <div flex>
+        <strong>Quantity</strong>
+      </div>
     </div>
 
-    <md-input-container>
-      <label>Quantity</label>
-      <input type="number" ng-model="newMoney.quantity">
-    </md-input-container>
+    <cw:line data-money="coin"></cw:line>
+  </div> -->
+  <md-table-container style="width: 80%">
+    <table md-table md-promise="promise">
+      <thead md-head md-order="'type'" md-on-reorder="updateMoney">
+        <tr md-row>
+          <th md-column md-order-by="date">Date</th>
+          <th md-column>Type</th>
+          <th md-column>Amount</th>
+          <th md-column>Quantity</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="coin" md-auto-select data-ng-repeat="coin in money">
+          <td md-cell>{{ coin.date | date : "DD/MM/YYYY hh:mm:ss,sss"}}</td>
+          <td md-cell>{{ coin.type }}</td>
+          <td md-cell>{{ coin.amount }}</td>
+          <td md-cell>{{ coin.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+
+  <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{money.length}}" md-on-paginate="updateMoney" md-page-select></md-table-pagination>
 
 
-    <md-button class="md-raised" aria-label="" data-ng-click="addMoney()">Add Money</md-button>
-
-    <div ng-repeat="coin in money">
-      <line data-money="coin"></line>
-    </div>
-
-    <!-- <md-list> -->
-      <!-- <md-subheader>List of torrents</md-subheader> -->
-      <!--You can use md-no-sticky class-->
-      <!-- <md-list-item layout="row" layout-align="space-around center">
-        <div>
-          <strong> Name </strong>
-        </div>
-        <div>
-          <strong> Url </strong>
-        </div>
-        <div> -->
-          <!-- <strong> Path </strong> -->
-        <!-- </div> -->
-      <!-- </md-list-item> -->
-
-
-      <!-- <md-list-item ng-repeat="torrent in torrents track by $index" layout="row" layout-align="space-around center"> -->
-        <!-- <span flex> <strong>id</strong> : {{torrent._id}} </span> -->
-        <!-- <div style="border: 1px solid black" layout="column" layout-align="space-around center"> -->
-          <!-- <strong>Name :</strong> -->
-          <!-- <span> {{torrent.name}} </span> -->
-        <!-- </div> -->
-        <!-- <div style="border: 1px solid black" layout="column" layout-align="space-around center"> -->
-          <!-- <strong>Url :</strong> -->
-          <!-- <span>{{torrent.url }} </span> -->
-        <!-- </div> -->
-        <!-- <div style="border: 1px solid black" layout="column" layout-align="space-around center"> -->
-          <!-- <strong>Path :</strong> -->
-          <!-- <span flex> {{torrent.path}} </span> -->
-        <!-- </div> -->
-        <!-- <div style="border: 1px solid black" layout="column" layout-align="space-around center">
-          <strong>MagnetURI :</strong>
-          <span flex> {{torrent.torrent.magnetURI }} </span>
-        </div> -->
-        <!-- <<md-divider md-inset></md-divider> -->
-      <!-- </md-list-item> -->
-    <!-- </md-list> -->
-    <!-- <div ng-repeat="torrent in torrents" layout="rows">
-      <span> <strong>id</strong> : {{torrent._id}} </span>
-      <span> <strong>Name</strong> : {{torrent.name}} </span>
-      <span> <strong>Url</strong> : {{torrent.url}} </span>
-      <span> <strong>Path</strong> : {{torrent.path}} </span>
-      <span> <strong>File</strong> : {{torrent.file}} </span>
-      <md-button class="md-mini" aria-label="remove" ng-click="removeTorrents(torrent._id)">remove</md-button>
-    </div> -->
-	</div>
+</div>

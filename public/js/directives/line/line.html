@@ -1,16 +1,16 @@
 
 <div layout="row" layout-align="space-around center">
-  <div flex="20">
-    {{ money.date }}
+  <div flex>
+    {{ money.date | date: "dd/MM/yyyy HH:mm:ss" }}
   </div>
-  <div flex="20">
-    {{ money.type | limitTo: 30 }}
+  <div flex>
+    {{ money.type }}
   </div>
-  <div flex="20">
-    {{ money.amount | limitTo: 30 }}
+  <div flex>
+    {{ money.amount }}
   </div>
-  <div flex="20">
-    {{ money.quantity | limitTo : 30 }}
+  <div flex>
+    {{ money.quantity }}
   </div>
-  <div flex><md-button class="md-mini" aria-label="remove" ng-click="removeMoney(money._id)">remove</md-button></div>
+  <!-- <div flex></div> -->
 </div>

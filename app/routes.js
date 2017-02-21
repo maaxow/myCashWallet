@@ -10,6 +10,8 @@ function getMoney(res){
   })
 }
 
+// Money.find().limit(5).skip(5);
+
 module.exports = function (app) {
 
     // GET ALL
@@ -20,6 +22,7 @@ module.exports = function (app) {
     // POST CREATE
     app.post('/api/money', function (req, res) {
 
+      console.log("body", req.body)
       return Money.create(req.body, function(err, money){
         //console.log("create money res", req.body, res);
         if(err){

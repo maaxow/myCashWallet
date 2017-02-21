@@ -1,21 +1,25 @@
 define(function(require){
   require('angular');
   require('services/money');
+  require('services/counter');
 
-  angular.module('app.directives.line', ['app.service.money'])
+  angular.module('app.directives.line', ['app.service.money','app.service.counter'])
 
-  .directive('line', function($money){
+  .directive('cwLine', function($money, $counter){
     return {
       templateUrl: 'js/directives/line/line.html',
       scope: {
         money: '='
       },
       controller: function($scope){
-
+        // console.log("line", $scope.money);
+        $scope.money.date = new Date($scope.money.date);
         $scope.removeMoney = function(id) {
           $money.delete(id)
           .then(function(data) {
-            $scope.$emit('updateMoneyList');
+            $counter.updateCounters().then(function(){
+              $counter.notify();
+            });
           });
         };
 

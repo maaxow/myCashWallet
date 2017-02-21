@@ -5,8 +5,10 @@ define(function(require){
   require('controllers/controllers.core');
   require('directives/directives.core');
   var deferred = require('angular-deferred-bootstrap');
+  require('data-table')
 
-  var app = angular.module('app', ['ui.router', 'app.controllers','ngMaterial','app.directives']);
+  var app = angular.module('app', [ 'ui.router', 'md.data.table', 'ngMaterial',
+                                    'app.controllers','app.directives' ]);
 
   app.config(['$locationProvider','$stateProvider', '$urlRouterProvider', function($locationProvider,$stateProvider, $urlRouterProvider){
     $stateProvider
