@@ -26,20 +26,7 @@
 </head>
 <body>
 	<div layout="column" layout-fill>
-		<md-toolbar md-scroll-shrink md-shrink-speed-factor="0.5" layout="row" layout-align="start center">
-			<md-button class="" aria-label="home" ui-sref="home">
-				<span> Home </span>
-			</md-button>
-			<md-button class="" aria-label="vizualisation" ui-sref="vizu">
-				<span> Vizualisation </span>
-			</md-button>
-			<md-button class="" aria-label="add" ui-sref="add">
-				<span> Add cash</span>
-			</md-button>
-			<div flex></div>
-			<cw:total></cw:total>
-
-		</md-toolbar>
+		<cw:toolbar></cw:toolbar>
 		<!--Note: for scrollShrink to work, the toolbar must be a sibling of a md-content element, placed before it.-->
 		<md-content layout-padding layout-wrap>
 		<!-- <md-button class="md-raised md-primary" ui-sref="home" aria-label="home">Home</md-button> -->

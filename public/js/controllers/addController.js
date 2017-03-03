@@ -3,13 +3,15 @@ define(function(require){
 	var toto = require('services/money');
 	return angular.module('app.controller.add', ['app.service.money','app.service.counter'])
 
-	.controller('AddController', ['$scope','$money', '$mdDialog', '$counter', function($scope, $money, $mdDialog, $counter) {
+	.controller('AddController', function($scope, $money, $mdDialog, $counter) {
 
 		var coinsAmount = ["0.01","0.02","0.05","0.10","0.20","0.50","1.00","2.00"];
 		var billsAmount = ["5","10","20","50","100","200","500"];
 
+		console.log("instance of AddController");
 		$scope.amountsOptions = coinsAmount;
 		$scope.typeOptions = ["Coins","Bills"];
+		$scope.toto = "Adding Money"
 
 		$scope.changeType = function(){
 			if($scope.newMoney.type === "Coins"){
@@ -66,5 +68,5 @@ define(function(require){
 
 		};
 
-	}]);
+	});
 });

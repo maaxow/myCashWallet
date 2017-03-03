@@ -71,6 +71,15 @@ define(function(require){
 			}
 		});
 
+		$scope.removeMoney = function(id) {
+			$money.delete(id)
+			.then(function(data) {
+				$counter.updateCounters().then(function(){
+					$counter.notify();
+				});
+			});
+		};
+
 		$scope.query = {
 			order : 'amount',
 			limit : 5,

@@ -10,7 +10,7 @@ define(function(require){
   var app = angular.module('app', [ 'ui.router', 'md.data.table', 'ngMaterial',
                                     'app.controllers','app.directives' ]);
 
-  app.config(['$locationProvider','$stateProvider', '$urlRouterProvider', function($locationProvider,$stateProvider, $urlRouterProvider){
+  app.config(function($locationProvider,$stateProvider, $urlRouterProvider){
     $stateProvider
     .state('home', {
       url: "/",
@@ -32,8 +32,23 @@ define(function(require){
 		$urlRouterProvider.otherwise('/');
 		// use the HTML5 History API
 		$locationProvider.html5Mode(true);
-  }]);
+  });
 
+  app.config(function($mdDialogProvider){
+    $mdDialogProvider.addPreset('addMoney', {
+      options : function(){
+        return {
+          templateUrl: 'views/add.html',
+          controller: 'AddController',
+          preserveScope: true,
+          scope: scope,
+          bindToController: true,
+          clickOutsideToClose: true,
+          escapeToClose: true
+        };
+      }
+    });
+  });
   app.init = function(){
     deferred.bootstrap({
       element: document.body,
