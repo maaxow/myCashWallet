@@ -7,10 +7,10 @@ define(function(require){
 
 		var coinsAmount = ["0.01","0.02","0.05","0.10","0.20","0.50","1.00","2.00"];
 		var billsAmount = ["5","10","20","50","100","200","500"];
-
-		console.log("instance of AddController");
+		var types = ["Coins","Bills"];
+		console.log("instance of AddController", coinsAmount);
 		$scope.amountsOptions = coinsAmount;
-		$scope.typeOptions = ["Coins","Bills"];
+		$scope.typeOptions = types;
 		$scope.toto = "Adding Money"
 
 		$scope.changeType = function(){

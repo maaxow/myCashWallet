@@ -15,9 +15,18 @@ define(function(require){
         //   $scope: scopeAddController
         // });
         // console.log("toolbar controller", AddController);
+        // console.log($controller('AddController', {
+        //   $scope : {
+        //     typeOptions : ["A", "B"]
+        //   }
+        // }));
         $scope.addMoney = function(){
-          //console.log("addMoney()");
-          var money = $mdDialog.addMoney($scope);
+          // var scopeuh = $scope.$new(true);
+          // console.log(scopeuh);
+          // var ctrl = $controller('AddController', {
+          //   $scope : scopeuh
+          // })
+          var money = $mdDialog.addMoney();
           $mdDialog.show(money).then(function(data){
             console.log("success, on ajoute les donnée recu :", data);
           }, function(data){

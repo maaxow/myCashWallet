@@ -7,7 +7,7 @@ define(function(require){
   var deferred = require('angular-deferred-bootstrap');
   require('data-table')
 
-  var app = angular.module('app', [ 'ui.router', 'md.data.table', 'ngMaterial',
+  var app = angular.module('main.core', [ 'ui.router', 'md.data.table', 'ngMaterial',
                                     'app.controllers','app.directives' ]);
 
   app.config(function($locationProvider,$stateProvider, $urlRouterProvider){
@@ -38,11 +38,12 @@ define(function(require){
     $mdDialogProvider.addPreset('addMoney', {
       options : function(){
         return {
-          templateUrl: 'views/add.html',
-          controller: 'AddController',
-          preserveScope: true,
-          scope: scope,
-          bindToController: true,
+          template : '<cw:add></cw:add>',
+          // templateUrl: 'views/add.html',
+          // controller: 'AddController',
+          // preserveScope: true,
+          // scope: angular.scopeAddController,
+          // bindToController: true,
           clickOutsideToClose: true,
           escapeToClose: true
         };
@@ -52,7 +53,7 @@ define(function(require){
   app.init = function(){
     deferred.bootstrap({
       element: document.body,
-      module: 'app'
+      module: 'main.core'
     });
   };
 
