@@ -1,26 +1,29 @@
-
-  {{ toto }}
+  <md-dialog-header>
+    <h2> {{ toto }}</h2>
+  </md-dialog-header>
   <md-dialog-content>
     <div class="md-dialog-content">
       <label>Type</label>
-      <md-select ng-model="newMoney.type" aria-label="Type" data-ng-change="changeType()" style="width: 10%">
+      <md-select ng-model="newMoney.type" aria-label="Type" data-ng-change="changeType()" style="">
         <md-option ng-value="opt" ng-repeat="opt in typeOptions" aria-label="">{{ opt }}</md-option>
       </md-select>
     </div>
 
     <div class="md-dialog-content">
       <label>Amount</label>
-      <md-select ng-model="newMoney.amount" aria-label="Amount" style="width: 10%">
+      <md-select ng-model="newMoney.amount" aria-label="Amount" style="">
         <md-option ng-value="opt" ng-repeat="opt in amountsOptions">{{ opt }}</md-option>
       </md-select>
     </div>
 
-    <md-input-container class="md-dialog-content" style="width: 10%">
-      <label>Quantity</label>
-      <input type="number" ng-model="newMoney.quantity">
-    </md-input-container>
+    <div class="md-dialog-content">
+      <md-input-container class="" style="">
+        <label>Quantity</label>
+        <input type="number" ng-model="newMoney.quantity">
+      </md-input-container>
+    </div>
 
   </md-dialog-content>
-  <md-dialog-actions>
+  <md-dialog-actions class="md-dialog-actions">
     <md-button class="md-raised" aria-label="" data-ng-click="addMoney()">Add Money</md-button>
   </md-dialog-actions>

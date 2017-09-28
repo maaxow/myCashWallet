@@ -2,7 +2,7 @@
 
   <div layout="row" layout-align="space-around center">
     <div>
-      <h2>total : {{ counter.total }}</h2>
+      <h2>total : {{ counter.total }} €</h2>
       <canvas id="allDonut" width="200px" height="200px"></canvas>
     </div>
     <div>
@@ -15,24 +15,6 @@
     </div>
   </div>
 
-  <!-- <div ng-repeat="coin in money">
-    <div layout="row" layout-align="space-around center" data-ng-if="$first">
-      <div flex>
-        <strong>Date</strong>
-      </div>
-      <div flex>
-        <strong>Type</strong>
-      </div>
-      <div flex>
-        <strong>Amount</strong>
-      </div>
-      <div flex>
-        <strong>Quantity</strong>
-      </div>
-    </div>
-
-    <cw:line data-money="coin"></cw:line>
-  </div> -->
   <md-table-container style="width: 80%">
     <table md-table md-promise="promise">
       <thead md-head md-order="'type'" md-on-reorder="updateMoney">
@@ -46,7 +28,7 @@
       </thead>
       <tbody md-body>
         <tr md-row md-select="coin" md-auto-select data-ng-repeat="coin in money">
-          <td md-cell>{{ coin.date | date : "DD/MM/YYYY hh:mm:ss,sss"}}</td>
+          <td md-cell>{{ coin.date | date : "dd/MM/yyyy HH:mm:ss"}}</td>
           <td md-cell>{{ coin.type }}</td>
           <td md-cell>{{ coin.amount }}</td>
           <td md-cell>{{ coin.quantity }}</td>
@@ -56,7 +38,7 @@
     </table>
   </md-table-container>
 
-  <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{money.length}}" md-on-paginate="updateMoney" md-page-select></md-table-pagination>
+  <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{totalEntries}}" md-on-paginate="updateMoney" md-page-select></md-table-pagination>
 
 
 </div>

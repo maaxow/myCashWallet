@@ -38,7 +38,7 @@ define(function(require){
     $mdDialogProvider.addPreset('addMoney', {
       options : function(){
         return {
-          template : '<cw:add></cw:add>',
+          template : '<md-dialog aria-label="Add Money"><cw:add></cw:add></md-dialog>',
           // templateUrl: 'views/add.html',
           // controller: 'AddController',
           // preserveScope: true,

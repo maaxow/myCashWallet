@@ -8,6 +8,7 @@ define(function(require){
     function Counter(){
 			this.allData = [];
       this.total = 0;
+			this.totalEntries = 0;
       this.nbCoins = 0;
       this.nbBills = 0;
       this.coinsCounter = {
@@ -49,13 +50,18 @@ define(function(require){
         //   return newCounter;
         // });
 			},
-      updateCounters : function(callback){
+      updateCounters : function(page, limit, callback){
 				proccessing = true;
-        var defer = $q.defer();
+        var defer = $q.defer(),
+				config = {
+					from : ((page-1) * limit),
+					limit : limit
+				};
         counters = new Counter();
-				$money.get().then(function(data){
-          var all = data.data;
-					counters.allData = data.data;
+				$money.get(config).then(function(data){
+          var all = data.data.data;
+					counters.allData = data.data.data;
+					counters.totalEntries = data.data.nbTotal;
           for(var i in all){
             var currentTotal = all[i].amount * all[i].quantity;
             counters.total = counters.total + currentTotal;

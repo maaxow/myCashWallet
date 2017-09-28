@@ -10,29 +10,18 @@ define(function(require){
       restrict : 'EA',
       templateUrl: 'js/directives/toolbar/toolbar.html',
       controller: function($scope){
-        // var scopeAddController = $scope.$new();
-        // var AddController = $controller('AddController', {
-        //   $scope: scopeAddController
-        // });
-        // console.log("toolbar controller", AddController);
-        // console.log($controller('AddController', {
-        //   $scope : {
-        //     typeOptions : ["A", "B"]
-        //   }
-        // }));
+        var addingDialog = $mdDialog.addMoney();
         $scope.addMoney = function(){
-          // var scopeuh = $scope.$new(true);
-          // console.log(scopeuh);
-          // var ctrl = $controller('AddController', {
-          //   $scope : scopeuh
-          // })
-          var money = $mdDialog.addMoney();
-          $mdDialog.show(money).then(function(data){
-            console.log("success, on ajoute les donnée recu :", data);
-          }, function(data){
-            console.log("error, on ajoute pas les donnée recu :", data);
+          $mdDialog.show(addingDialog).then(function(){
+            // console.log("success, on ajoute les donnée recu :");
+          }, function(){
+            // console.log("error, on ajoute pas les donnée recu :");
           });
         };
+        $scope.$on('cw.add.closeDialog', function(event, argument){
+          console.log("tout s'est bien passé, on va fermé le dialog :)");
+          $mdDialog.hide(addingDialog);
+        });
       }
     }
   });

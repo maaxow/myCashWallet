@@ -6,19 +6,21 @@ define(function(require){
 	.factory('$money', ['$http','$q',function($http, $q) {
 		return {
 			get : function(config) {
-				return $http.get('/api/money').then(function(data){
-					var list = data.data;
+				return $http.post('/api/money', config).then(function(data){
+					var list = data.data.data;
 					for(var i in list){
-						if(list[i].type === "Coins")
-						list[i].amount = list[i].amount.toFixed(2);
+						if(list[i].type === "Coins"){
+							list[i].amount = list[i].amount.toFixed(2);
+						}
 					}
-					data.data = list;
+					data.data.data = list;
+					console.log("data after request :", data.data.data[0]);
 					return data;
 				});
 			},
 			create : function(moneyData) {
 				if(moneyData){
-					return $http.post('/api/money', moneyData);
+					return $http.post('/api/money/create', moneyData);
 				}
 				return $http.get('/api/money');
 			},

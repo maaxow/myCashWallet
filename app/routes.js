@@ -10,6 +10,24 @@ function getMoney(res){
   })
 }
 
+function getMoneySpecific(res, config){
+  var nbTotal = 0;
+  Money.count(function(arr, money){
+    nbTotal = money;
+  });
+  Money.find(function(err, money){
+    // console.log("money", money);
+    if(err){
+      res.send(err);
+    }
+    var send = {
+      data: money,
+      nbTotal : nbTotal
+    }
+    res.json(send);
+  }).skip(config.from).limit(config.limit);
+}
+
 // Money.find().limit(5).skip(5);
 
 module.exports = function (app) {
@@ -19,10 +37,16 @@ module.exports = function (app) {
         getMoney(res);
     });
 
-    // POST CREATE
+    // POST GET WITH QUERY PARAMS
     app.post('/api/money', function (req, res) {
 
-      console.log("body", req.body)
+      getMoneySpecific(res, req.body);
+    });
+
+    // POST CREATE
+    app.post('/api/money/create', function (req, res) {
+
+      console.log("body", req.body);
       return Money.create(req.body, function(err, money){
         //console.log("create money res", req.body, res);
         if(err){

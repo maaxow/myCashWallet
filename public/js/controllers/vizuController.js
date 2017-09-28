@@ -81,25 +81,35 @@ define(function(require){
 		};
 
 		$scope.query = {
-			order : 'amount',
+			order : 'date',
 			limit : 5,
 			page : 1
-		}
+		};
+		$scope.money = [];
+		$scope.totalEntries = 0;
 		var success = function(money){
 			$scope.money = money;
 		}
 
 		$scope.updateMoney = function(){
-			$scope.promise = $counter.updateCounters(success).$promise;
+			console.log("updateMoney");
+			$scope.promise = $counter.updateCounters($scope.query.page, $scope.query.limit, success).then(function(data){
+				// var data = $counter.get();
+				console.log("coutner", data);
+				$scope.money = data.allData;
+				$scope.counter = data;
+				$scope.totalEntries = data.totalEntries;
+			});
 		};
 
 		$scope.$watch(function(){return $counter.getLastUpdate();}, function(){
 			$timeout(function(){
-				$counter.updateCounters("vizuController").then(function(data){
+				$counter.updateCounters($scope.query.page, $scope.query.limit, success).then(function(data){
 					// var data = $counter.get();
-					console.log("coutner", data);
+					// console.log("coutner", data);
 					$scope.money = data.allData;
 					$scope.counter = data;
+					$scope.totalEntries = data.totalEntries;
 					allChart.data.datasets[0].data[0] = data.nbCoins;
 					allChart.data.datasets[0].data[1] = data.nbBills;
 					allChart.update();
