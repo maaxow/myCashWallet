@@ -1,5 +1,5 @@
 var path = require('path');
-var Money = require('./models/Money');
+var Money = require('./models/money');
 
 function getMoney(res){
   Money.find(function(err, money){
@@ -54,6 +54,34 @@ module.exports = function (app) {
         }
         getMoney(res);
       });
+    });
+
+    app.get('api/money/countAll/:money_type',function(req,res){
+
+      const money_type = req.params.money_type;
+
+      try{
+
+        Money.find({
+
+          type:money_type
+
+        },function(err,res){
+
+          if(err)
+            return res.send(err);
+
+          return res.json(res)
+
+        });
+
+      }catch(ex){
+
+        console.log("Database Error");
+        return res.send("Database Error");
+
+      }
+
     });
 
     // UPDATE
