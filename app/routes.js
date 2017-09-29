@@ -72,7 +72,27 @@ module.exports = function (app) {
             getMoney(res);
         });
     });
+    // Count money 
+    app.get('/api/money/count/:type_money', function(req, res){
+        let type = req.params.type_money;
+        let agg = Money.aggregate();
+        agg.match({type});
+        agg.project({
+          total: {
+            $sum: {$multiply: ['$quantity', '$amount']}
+          }
+        });
 
+        agg.exec((err, data)=>{
+          if(err){
+            res.json(error);
+            
+          } else {
+            res.json(data[0].total)
+          }
+      });
+        
+    });
     // application -------------------------------------------------------------
     app.get('/*', function (req, res) {
       res.sendFile(path.resolve(__dirname + '/../public/index.html')); // load the single view file (angular will handle the page changes on the front-end)
