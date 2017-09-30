@@ -14,5 +14,7 @@ results
 npm-debug.log
 node_modules
 public/vendor
-/.bowerrc
+.bowerrc
 /public/favicon.ico
+.DS_Store
+app/.DS_Store
