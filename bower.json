@@ -1,5 +1,5 @@
 {
-  "name": "myCashWallet",
+  "name": "my-cash-wallet",
   "description": "Simple application to manage money.",
   "main": "server.js",
   "authors": [

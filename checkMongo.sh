@@ -1,8 +1,8 @@
 #!/bin/bash
 
-EXE="mongod.exe"
+EXE="mongod"
 result=$(tasklist | findstr "mongod.exe")
-
+result=`ps aux | grep mongod`
 for i in $result;
 do
   if [ $i = $EXE ]
