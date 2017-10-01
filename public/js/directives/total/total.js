@@ -18,7 +18,7 @@ define(function(require){
           $counter.updateCounters("cw:total").then(function(){
             var count = $counter.get();
             // console.log('total =', count);
-            $scope.total = count.total;
+            $scope.total = count.total.toFixed(2);
             $scope.nbCoins = count.nbCoins;
             $scope.nbBills = count.nbBills;
           });
