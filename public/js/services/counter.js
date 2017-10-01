@@ -1,7 +1,7 @@
 define(function(require){
 	require("angular");
 
-	return angular.module('app.service.counter', ['app.service.money'])
+	return angular.module('cw.service.counter', ['cw.service.money'])
 
 	.service('$counter', ['$http','$q', '$money', function($http, $q, $money) {
 

@@ -13,7 +13,7 @@ define(function(require){
         var types = ["Coins","Bills"];
         $scope.amountsOptions = coinsAmount;
         $scope.typeOptions = types;
-        $scope.toto = "Adding Money"
+        $scope.header = "Adding Money"
 
         $scope.changeType = function(){
         	if($scope.newMoney.type === "Coins"){

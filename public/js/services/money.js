@@ -1,7 +1,7 @@
 define(function(require){
 	require("angular");
 
-	return angular.module('app.service.money', [])
+	return angular.module('cw.service.money', [])
 
 	.factory('$money', ['$http','$q',function($http, $q) {
 		return {
