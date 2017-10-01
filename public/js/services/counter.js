@@ -1,7 +1,7 @@
 define(function(require){
 	require("angular");
 
-	return angular.module('app.service.counter', ['app.service.money'])
+	return angular.module('cw.service.counter', ['cw.service.money'])
 
 	.service('$counter', ['$http','$q', '$money', function($http, $q, $money) {
 
@@ -65,7 +65,7 @@ define(function(require){
           for(var i in all){
             var currentTotal = all[i].amount * all[i].quantity;
             counters.total = counters.total + currentTotal;
-
+						counters.total = counters.total.toFixed(2);
             if(all[i].type === "Coins"){
               counters.nbCoins += all[i].quantity;
               counters.coinsCounter[all[i].amount] += all[i].quantity;

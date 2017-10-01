@@ -2,7 +2,7 @@ define(function(require){
 	require('angular');
 	require('services/money');
 	var Chart = require('chart');
-	return angular.module('app.controller.vizu', ['app.service.money', 'app.service.counter'])
+	return angular.module('cw.controller.vizualisation', ['cw.service.money', 'cw.service.counter'])
 
 	.controller('VizualisationController', function($scope, $money, $counter, $timeout) {
 

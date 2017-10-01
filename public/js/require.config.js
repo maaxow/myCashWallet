@@ -2,7 +2,7 @@ require.config({
 	baseUrl: 'js/',
 	out: 'dist/app.build.js',
 	paths: {
-		controllers: 'controllers',
+		partials: 'partials',
 		services: 'services',
 		directives: 'directives',
 		vendor: '../vendor/',
@@ -53,7 +53,7 @@ require.config({
 	}
 })
 
-require(['main.core'], function(app) {
+require(['cw.app'], function(app) {
   app.init()
 });
 

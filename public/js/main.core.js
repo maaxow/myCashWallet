@@ -2,13 +2,13 @@ define(function(require){
   var angular = require('angular');
   require('angular-material');
   require('angular-ui-router');
-  require('controllers/controllers.core');
+  require('controllers.core');
   require('directives/directives.core');
   var deferred = require('angular-deferred-bootstrap');
   require('data-table')
 
-  var app = angular.module('main.core', [ 'ui.router', 'md.data.table', 'ngMaterial',
-                                    'app.controllers','app.directives' ]);
+  var app = angular.module('cw.app', [ 'ui.router', 'md.data.table', 'ngMaterial',
+                                    'cw.controllers','cw.directives' ]);
 
   app.config(function($locationProvider,$stateProvider, $urlRouterProvider){
     $stateProvider
@@ -21,11 +21,6 @@ define(function(require){
       url: '/vizu',
       templateUrl: 'views/vizu.html',
       controller: 'VizualisationController'
-    })
-    .state('add', {
-      url: '/add',
-      templateUrl: 'views/add.html',
-      controller: 'AddController'
     });
 
     // For invalid route
