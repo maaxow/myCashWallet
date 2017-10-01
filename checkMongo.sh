@@ -1,7 +1,12 @@
 #!/bin/bash
 
-EXE="mongod.exe"
-result=$(tasklist | findstr "mongod.exe")
+EXE="mongod"
+
+# Windows Users
+#result=$(tasklist | findstr "mongod.exe")
+
+# Unix Users
+result=`ps aux | grep mongod`
 
 for i in $result;
 do
