@@ -73,7 +73,6 @@ module.exports = function (app) {
         console.error("Database Error");
         return res.send("Database Error");
       }
-
     });
 
     // UPDATE
@@ -92,10 +91,10 @@ module.exports = function (app) {
             getMoney(res);
         });
     });
-    // Count money 
+    // Count money
     app.get('/api/money/count/:type_money', function(req, res){
-        let type = req.params.type_money;
-        let agg = Money.aggregate();
+        var type = req.params.type_money;
+        var agg = Money.aggregate();
         agg.match({type});
         agg.project({
           total: {
@@ -106,12 +105,12 @@ module.exports = function (app) {
         agg.exec((err, data)=>{
           if(err){
             res.json(error);
-            
+
           } else {
             res.json(data[0].total)
           }
       });
-        
+
     });
     // application -------------------------------------------------------------
     app.get('/*', function (req, res) {

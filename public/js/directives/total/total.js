@@ -2,7 +2,7 @@ define(function(require){
   require('angular');
   require('services/counter');
 
-  angular.module('app.directives.total', ['app.service.counter'])
+  angular.module('cw.directives.total', ['cw.service.counter'])
 
   .directive('cwTotal', function($counter){
     return {
@@ -18,7 +18,7 @@ define(function(require){
           $counter.updateCounters("cw:total").then(function(){
             var count = $counter.get();
             // console.log('total =', count);
-            $scope.total = count.total.toFixed(2);
+            $scope.total = parseFloat(count.total).toFixed(2);
             $scope.nbCoins = count.nbCoins;
             $scope.nbBills = count.nbBills;
           });

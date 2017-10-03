@@ -2,6 +2,7 @@ require.config({
 	baseUrl: 'js/',
 	out: 'dist/app.build.js',
 	paths: {
+		app: 'cw.app',
 		partials: 'partials',
 		services: 'services',
 		directives: 'directives',
@@ -54,7 +55,7 @@ require.config({
 })
 
 require(['cw.app'], function(app) {
-  app.init()
+  app.init();
 });
 
 
