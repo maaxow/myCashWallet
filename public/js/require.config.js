@@ -2,7 +2,6 @@ require.config({
 	baseUrl: 'js/',
 	out: 'dist/app.build.js',
 	paths: {
-		app: 'cw.app',
 		partials: 'partials',
 		services: 'services',
 		directives: 'directives',
