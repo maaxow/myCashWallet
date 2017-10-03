@@ -14,12 +14,12 @@ define(function(require){
     $stateProvider
     .state('home', {
       url: "/",
-      templateUrl: 'views/home.html',
+      templateUrl: 'js/partials/home/home.html',
       controller: 'mainController'
     })
     .state('vizu', {
       url: '/vizu',
-      templateUrl: 'views/vizu.html',
+      templateUrl: 'js/partials/vizualisation/vizu.html',
       controller: 'VizualisationController'
     });
 
@@ -48,7 +48,7 @@ define(function(require){
   app.init = function(){
     deferred.bootstrap({
       element: document.body,
-      module: 'main.core'
+      module: 'cw.app'
     });
   };
 
