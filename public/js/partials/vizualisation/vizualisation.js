@@ -22,6 +22,9 @@ define(function(require){
 			}
 		});
 
+		$money.test('EUR').then(function(data){
+			console.log(data.data);
+		})
 		var coinsData = {
 			labels : ["0.01", "0.02", "0.05","0.10","0.20","0.50","1.00","2.00"],
 			datasets : [{

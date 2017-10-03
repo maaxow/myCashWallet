@@ -43,6 +43,13 @@ define(function(require){
 				} else {
 					return $http.get('/api/money');
 				}
+			},
+			test : function(devise){
+				if(devise){
+					return $http.get('api/money/' + devise);
+				} else {
+					return $http.get('/api/money');
+				}
 			}
 		}
 	}]);

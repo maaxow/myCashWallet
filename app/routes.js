@@ -1,5 +1,6 @@
 var path = require('path');
 var Money = require('./models/money');
+var MoneyType = require('../config/constants');
 
 function getMoney(res){
   Money.find(function(err, money){
@@ -109,8 +110,23 @@ module.exports = function (app) {
           } else {
             res.json(data[0].total)
           }
-      });
+      	});
+    });
 
+		// Get type of money
+    app.get('/api/money/:devise', function(req, res){
+        var devise = req.params.devise;
+				var response = null;
+				var error = {error : 'this is an bad error'};
+        if(devise === 'EUR'){
+					response = MoneyType.EUR;
+				}
+				console.log(response);
+				if(response != null){
+					res.json(response);
+				} else {
+					res.json(error);
+				}
     });
     // application -------------------------------------------------------------
     app.get('/*', function (req, res) {
