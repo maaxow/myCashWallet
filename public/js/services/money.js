@@ -36,6 +36,20 @@ define(function(require){
 				} else {
 					return $http.get('/api/money');
 				}
+			},
+			countByType : function(type){
+				if(type){
+					return $http.get('api/money/countAll/' + type);
+				} else {
+					return $http.get('/api/money');
+				}
+			},
+			test : function(devise){
+				if(devise){
+					return $http.get('api/money/' + devise);
+				} else {
+					return $http.get('/api/money');
+				}
 			}
 		}
 	}]);

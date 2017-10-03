@@ -1,7 +1,8 @@
 define(function(require){
 	require('angular');
 	var toto = require('services/money');
-	return angular.module('app.directives.add', ['app.service.money','app.service.counter'])
+	require('services/counter');
+	return angular.module('cw.directives.add', ['cw.service.money','cw.service.counter'])
 
 	.directive('cwAdd', function($money, $mdDialog, $counter) {
 

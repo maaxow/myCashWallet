@@ -54,7 +54,7 @@ require.config({
 })
 
 require(['cw.app'], function(app) {
-  app.init()
+  app.init();
 });
 
 

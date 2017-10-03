@@ -64,7 +64,7 @@ define(function(require){
 					counters.totalEntries = data.data.nbTotal;
           for(var i in all){
             var currentTotal = all[i].amount * all[i].quantity;
-            counters.total = counters.total + currentTotal;
+            counters.total = parseFloat(counters.total + currentTotal);
 						counters.total = counters.total.toFixed(2);
             if(all[i].type === "Coins"){
               counters.nbCoins += all[i].quantity;

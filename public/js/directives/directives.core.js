@@ -4,8 +4,8 @@ define(function(require){
   require('directives/toolbar/toolbar');
   require('directives/add/add');
 
-  angular.module('app.directives', [
-    'app.directives.line', 'app.directives.total',
-    'app.directives.toolbar','app.directives.add']);
+  angular.module('cw.directives', [
+    'cw.directives.line', 'cw.directives.total',
+    'cw.directives.toolbar','cw.directives.add']);
 
 });

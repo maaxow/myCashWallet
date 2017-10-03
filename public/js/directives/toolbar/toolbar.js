@@ -1,9 +1,8 @@
 define(function(require){
   require('angular');
   require('services/money');
-  var addCtrl = require('controllers/addController');
 
-  angular.module('app.directives.toolbar', ['app.service.money', 'app.controller.add'])
+  angular.module('cw.directives.toolbar', ['cw.service.money'])
 
   .directive('cwToolbar', function($mdDialog, $money, $controller, $counter){
     return {

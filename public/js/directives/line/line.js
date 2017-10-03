@@ -3,7 +3,7 @@ define(function(require){
   require('services/money');
   require('services/counter');
 
-  angular.module('app.directives.line', ['app.service.money','app.service.counter'])
+  angular.module('cw.directives.line', ['cw.service.money','cw.service.counter'])
 
   .directive('cwLine', function($money, $counter){
     return {

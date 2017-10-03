@@ -13,7 +13,7 @@
     "morgan": "^1.1.1"
   },
   "scripts": {
-    "prestart": "sh checkMongo.sh",
+    "prestart": "checkMongo.sh",
     "start": "node server.js",
     "build": "bower install && npm install"
   },
