@@ -1,9 +1,9 @@
 #!/bin/bash
 
-
 # Windows Users
 EXE="mongod.exe"
 result=$(tasklist | findstr "mongod.exe")
+
 
 # Unix Users
 #EXE="mongod"
