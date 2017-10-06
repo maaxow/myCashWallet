@@ -1,4 +1,4 @@
-<md-toolbar md-scroll-shrink md-shrink-speed-factor="0.5" layout="row" layout-align="start center">
+<md-toolbar class="app-header" md-scroll-shrink md-shrink-speed-factor="0.5" layout="row" layout-align="start center">
   <md-button class="" aria-label="home" ui-sref="home">
     <span> Home </span>
   </md-button>
@@ -6,7 +6,7 @@
     <span> Vizualisation </span>
   </md-button>
   <!-- <md-button class="" aria-label="add" ui-sref="add"> -->
-  <md-button class="" aria-label="add" data-ng-click="addMoney()">
+  <md-button class="" aria-label="add" data-ng-click="addMoney($event)">
     <span> Add cash</span>
   </md-button>
   <div flex></div>
