@@ -3,7 +3,7 @@ var Money = require('./models/money');
 var MoneyType = require('../config/constants');
 
 function getMoney(res){
-  Money.find(function(err, money){
+  return Money.find(function(err, money){
     if(err){
       res.send(err);
     }
@@ -48,11 +48,12 @@ module.exports = function (app) {
     app.post('/api/money/create', function (req, res) {
 
       console.log("body", req.body);
-      return Money.create(req.body, function(err, money){
+      return Money.insertMany(req.body, function(err, money){
         //console.log("create money res", req.body, res);
         if(err){
           res.send(err);
         }
+        console.log('Multiple insertion successfull');
         getMoney(res);
       });
     });

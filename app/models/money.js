@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('Money', {
+var SchemaMap = {};
+// schema for money object
+SchemaMap.money = new mongoose.Schema({
 	date: {
 		type: Date,
 		default: new Date()
@@ -18,3 +20,5 @@ module.exports = mongoose.model('Money', {
 		default: 0
 	}
 });
+
+module.exports = mongoose.model('Money', SchemaMap.money);

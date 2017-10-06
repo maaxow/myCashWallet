@@ -10,7 +10,9 @@ define(function(require){
       templateUrl: 'js/directives/toolbar/toolbar.html',
       controller: function($scope){
         var addingDialog = $mdDialog.addMoney();
-        $scope.addMoney = function(){
+
+        // a modal for adding money
+        $scope.addMoney = function (ev) {
           $mdDialog.show(addingDialog).then(function(){
             // console.log("success, on ajoute les donnée recu :");
           }, function(){

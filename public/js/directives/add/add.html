@@ -1,29 +1,60 @@
-  <md-dialog-header>
-    <h2> {{ header }}</h2>
-  </md-dialog-header>
-  <md-dialog-content>
-    <div class="md-dialog-content">
-      <label>Type</label>
-      <md-select ng-model="newMoney.type" aria-label="Type" data-ng-change="changeType()" style="">
-        <md-option ng-value="opt" ng-repeat="opt in typeOptions" aria-label="">{{ opt }}</md-option>
-      </md-select>
-    </div>
-
-    <div class="md-dialog-content">
-      <label>Amount</label>
-      <md-select ng-model="newMoney.amount" aria-label="Amount" style="">
-        <md-option ng-value="opt" ng-repeat="opt in amountsOptions">{{ opt }}</md-option>
-      </md-select>
-    </div>
-
-    <div class="md-dialog-content">
-      <md-input-container class="" style="">
-        <label>Quantity</label>
-        <input type="number" ng-model="newMoney.quantity">
-      </md-input-container>
-    </div>
-
-  </md-dialog-content>
-  <md-dialog-actions class="md-dialog-actions">
-    <md-button class="md-raised" aria-label="" data-ng-click="addMoney()">Add Money</md-button>
-  </md-dialog-actions>
+<div class="add-money-modal">
+    <md-toolbar>
+      <div layout="row">
+        <div class="md-toolbar-tools">
+          <h2> {{ header }}</h2>
+        </div>
+        <md-button class="md-fab" aria-label="Add money" ng-click="addEntry(newEntry)" style="position: absolute; top: 45%; right: 0;" ng-disabled="addMoneyForm.$invalid">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <form name="addMoneyForm" ng-submit="" novalidate>
+        <div layout="row">
+          <md-input-container id="add-money-input-container">
+            <label class="no-margin">Type</label>
+            <md-select name="moneyType" ng-model="newEntry.type" aria-label="Type" data-ng-change="changeType()" style="" class="no-margin" required>
+              <md-option ng-value="opt" ng-repeat="opt in typeOptions"  ng-selected="$first">{{ opt }}</md-option>
+            </md-select>
+            <div class="errors" ng-messages="addMoneyForm.ammount.$error">
+              <div ng-message="required">This field is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container id="add-money-input-container">
+            <label class="no-margin">Amount</label>
+            <md-select name="amount" ng-model="newEntry.amount" aria-label="Amount" style="" class="no-margin" required>
+              <md-option ng-value="opt" ng-repeat="opt in amountsOptions" ng-selected="$first">{{ opt }}</md-option>
+            </md-select>
+            <div class="errors" ng-messages="addMoneyForm.ammount.$error">
+              <div ng-message="required">This field is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container id="add-money-input-container">
+            <label class="no-margin">Quantity</label>
+            <input name="quantity" type="number" ng-model="newEntry.quantity" aria-label="Money Quantity" min="1" ng-required="true" md-auto-hide="false" ng-init="newEntry.quantity = 1;">
+            <div ng-messages="addMoneyForm.quantity.$error" role="alert" multiple>
+              <div ng-message="required">This field is required.</div>
+              <div ng-message="min">Min. Quantity should be 1.</div>
+            </div>
+          </md-input-container>
+        </div>
+      </form>
+      <div class="" ng-if="newEntryList.length" style="max-height: 150px; overflow-y: scroll;">
+        <md-list ng-cloak>
+          <md-list-item ng-repeat="item in newEntryList"  class="md-whiteframe-z2" style="margin: 10px 18px;">
+            <div>
+              <span>{{item.quantity + ' ' + item.type + ((item.quantity > 1) ? 's' : '') + ' of amount ' + item.amount + ' each'}}</span>
+              <i class="fa fa-times-circle" aria-hidden="true" style="position: absolute; top: 35%; right: 5%; color: red; cursor: pointer" ng-click="removeFromNewEntryList($index)"></i>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions class="md-dialog-actions">
+      <md-button class="md-raised md-primary" aria-label="" data-ng-click="addMoney(newEntryList)" ng-disabled="!newEntryList.length">
+        Add
+        <span ng-if="newEntryList.length">{{newEntryList.length + ((newEntryList.length === 1) ? ' item' : ' items')}}</span>
+      </md-button>
+    </md-dialog-actions>
+</div>
